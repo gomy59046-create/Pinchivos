@@ -14,7 +14,9 @@ def configurar_navegador():
     chrome_options.add_argument("--start-maximized")
     
     # Entorno aislado para evitar conflictos de bloqueo de base de datos
-    ruta_perfil_bot = r"C:\Users\Dell\Desktop\Python_all_my_scripts\Perfil_Bot"
+    # Entorno aislado dinámico: detecta la carpeta actual donde vive este script
+    directorio_actual = os.path.dirname(os.path.abspath(__file__))
+    ruta_perfil_bot = os.path.join(directorio_actual, "Perfil_Bot")
     chrome_options.add_argument(f"user-data-dir={ruta_perfil_bot}")
     
     driver = webdriver.Chrome(options=chrome_options)
